@@ -1,0 +1,57 @@
+What is the worst case time complexity of the following code :
+
+/* 
+ * V is sorted 
+ * V.size() = N
+ * The function is initially called as searchNumOccurrence(V, k, 0, N-1)
+ */
+int searchNumOccurrence(vector<int> &V, int k, int start, int end) {
+    if (start > end) return 0;
+    int mid = (start + end) / 2;
+    if (V[mid] < k) return searchNumOccurrence(V, k, mid + 1, end);
+    if (V[mid] > k) return searchNumOccurrence(V, k, start, mid - 1);
+    return searchNumOccurrence(V, k, start, mid - 1) + 1 + searchNumOccurrence(V, k, mid + 1, end);
+}
+NOTE : This question involves recursion which will be explained later in topic Backtracking. So, if you are not able to approach this question now, you can give it a try later.
+
+
+This code performs a recursive binary search on a sorted vector 
+V to find the number of occurrences of a given value k.
+
+Code Analysis:
+Base Case:
+
+The recursion terminates when start>end, returning 0.
+Binary Search Steps:
+
+The middle element 
+
+V[mid] is compared with k.
+If V[mid]<k, the function searches the right half of the 
+array (searchNumOccurrence(V, k, mid + 1, end)).
+If V[mid]>k, the function searches the left half of the array (searchNumOccurrence(V, k, start, mid - 1)).
+If V[mid]==k, the function counts this occurrence and recursively searches both the left and 
+right halves to find additional occurrences.
+
+Worst-Case Scenario:
+The worst-case scenario occurs when all the elements in the array are equal to k, 
+meaning the recursive function must search the entire array.
+
+When V[mid]==k, the function recursively searches both the left and right subarrays. 
+Thus, in this case, the entire array will be explored.
+
+In each recursive step, the function splits the array in half (like binary search), 
+but because it searches both halves when 
+V[mid]==k, it ends up exploring all elements in the array.
+
+Time Complexity:
+The worst-case scenario occurs when the value 
+k is present at every index in the array. In this case, the function explores every element.
+Since the function makes recursive calls that cover both left and right halves in the worst case, 
+the entire array of size N will be explored.
+Thus, the worst-case time complexity is O(N).
+
+Conclusion:
+The worst-case time complexity of the given code is O(N), where 
+N is the size of the array V. This happens because the function may need to explore all 
+elements in the array when they are all equal to k.

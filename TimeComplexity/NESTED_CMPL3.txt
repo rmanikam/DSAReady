@@ -1,0 +1,90 @@
+What is time complexity of following code :
+
+        int count = 0;
+        for (int i = N; i > 0; i /= 2) {
+            for (int j = 0; j < i; j++) {
+                count += 1;
+            }
+        }
+
+Ans is O(N)
+
+Analyzing the Time Complexity:
+Outer Loop:
+
+The outer loop runs 
+O(logN) times, as the variable i is halved in each iteration (i /= 2).
+Inner Loop:
+
+The inner loop runs 𝑖 times for each iteration of the outer loop. So in the first iteration, 
+the inner loop runs N times, in the second iteration it runs N/2 times, in the third iteration 
+N/4 times, and so on.
+Summing the Work Done in All Iterations:
+The total number of operations done by the inner loop across all iterations of the outer loop is 
+the sum:
+𝑁 + 𝑁2 + 𝑁4 + N + 2N + 4N
+
+This forms a geometric series:
+𝑆 = 𝑁(1 + 1/2 + 1/4 + …)
+
+The sum of this infinite geometric series converges to 2𝑁
+because:
+
+S = (N) / 1 - 1/2  = 2N
+
+Thus, the total work done by the inner loop over all iterations is proportional to 
+
+O(2N), which simplifies to O(N).
+
+Conclusion:
+Even though the outer loop runs O(logN) times, the total number of operations across 
+all iterations of the inner loop still adds up to O(N), not O(NlogN). This is because the number 
+of operations performed by the inner loop decreases exponentially with each iteration of the 
+outer loop.
+
+Therefore, the overall time complexity of the code is O(N).
+
+But dont we multiply time complexity of outer loop with inner loop
+
+
+In general, when calculating the time complexity of nested loops, we do multiply the time
+ complexity of the outer loop with that of the inner loop. However, in this particular case, 
+ because of how the inner loop's iterations change with each iteration of the outer loop, 
+ the multiplication doesn't directly apply in the way you might expect.
+
+Why We Don’t Multiply in This Case:
+Outer Loop Behavior:
+
+The outer loop runs 
+
+O(logN) times because the variable i is divided by 2 in each iteration (i /= 2).
+Inner Loop Behavior:
+
+The inner loop does not run a constant number of times across the iterations of the outer loop.
+ Instead, it runs for i iterations, where i decreases exponentially (i.e., N, 𝑁/2,  N/4, etc.).
+Because the inner loop's work decreases as the outer loop progresses, we cannot simply multiply 
+the complexities of the outer and inner loops. Instead, we must sum up the total work across 
+all iterations.
+
+Summing Instead of Multiplying:
+In the first iteration, the inner loop runs N times.
+In the second iteration, the inner loop runs N/2 times.
+In the third iteration, the inner loop runs N/4 times.
+And so on.
+This gives us a series:
+
+𝑁 + 𝑁 / 2 + 𝑁 / 4 + ...
+
+This is a geometric series with a sum of 2N.
+
+Thus, instead of multiplying 
+𝑂(log𝑁) by O(N), we sum the work done over the 
+
+logN iterations, which results in O(N).
+
+Conclusion:
+While multiplying the outer and inner loop complexities is often valid when the inner loop executes a fixed or constant number of times per outer loop iteration, in this case, the inner loop's iterations decrease exponentially. This changes the calculation, leading to the total time complexity being O(N).
+So, despite having an outer loop running O(logN) times and the inner loop starting with 
+
+O(N), the cumulative total work done is still 
+O(N) due to the decreasing number of iterations in the inner loop.

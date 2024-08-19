@@ -1,0 +1,37 @@
+What is the time complexity of the following code :
+
+        int j = 0;
+        for(int i = 0; i < n; ++i) {
+            while(j < n && arr[i] < arr[j]) {
+                j++;
+            }
+        }
+
+Understanding the Code:
+Outer for loop:
+
+The outer loop runs from 
+i=0 to i<n, so it iterates n times.
+Inner while loop:
+
+The inner while loop runs as long as j < n and arr[i] < arr[j] holds true. 
+Every time the condition holds, j is incremented.
+Key Observations:
+The variable j is incremented inside the while loop. Importantly, 
+j is never reset after the while loop finishes for a particular i. This means
+ that j only increases throughout the execution of the loops.
+
+The maximum value j can reach is n. Hence, the total number of iterations of
+ the inner while loop across all iterations of the outer for loop is at most n.
+
+Time Complexity:
+The outer loop runs n times.
+The inner while loop will, in total, run n times across all iterations of the outer loop 
+because j can only be incremented up to n.
+Thus, each iteration of the outer loop may not necessarily run the while loop fully, but
+ the total number of increments of j is bounded by n. Therefore, the total number of operations 
+ is proportional to n.
+
+Conclusion:
+The time complexity of the given code is 
+O(n).

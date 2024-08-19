@@ -1,0 +1,45 @@
+What is the worst case time complexity of the following code:
+
+int findMinPath(vector<vector<int> > &V, int r, int c) {
+  int R = V.size();
+  int C = V[0].size();
+  if (r >= R || c >= C) return 100000000; // Infinity
+  if (r == R - 1 && c == C - 1) return 0;
+  return V[r][c] + min(findMinPath(V, r + 1, c), findMinPath(V, r, c + 1));
+}
+Assume R = V.size() and C = V[0].size().
+
+The given function findMinPath recursively computes the minimum path sum from the top-left corner
+ to the bottom-right corner of a grid V. The function explores two possible paths at each step: 
+ moving down (incrementing the row index r) or moving right (incrementing the column index c).
+
+Key Points in the Function:
+If the current position is out of bounds (i.e., r≥R or c≥C), it returns a large value
+ (effectively infinity) to exclude this path from consideration.
+If the current position is at the bottom-right corner (i.e., 
+r=R−1 and c=C−1), it returns 0, marking the end of the path.
+Otherwise, it recursively computes the minimum path by exploring both moving down and moving right,
+ and adding the current cell's value.
+Worst-Case Time Complexity Analysis:
+Recursive Nature of the Problem:
+The function makes two recursive calls at every step: one to explore the cell below (down) 
+and one to explore the cell to the right (right).
+The number of recursive calls grows exponentially because at each step, two 
+recursive branches are created.
+Subproblems:
+At each cell (r,c), the function calculates the minimum path from that cell to the bottom-right
+ corner. In the worst case, the function explores every possible path in the grid from the
+  top-left corner to the bottom-right corner.
+Tree Depth and Size:
+The depth of the recursive tree is R+C because the maximum number of moves you can make is 
+R−1 down and C−1 right.
+The total number of nodes (subproblems) in the recursive tree is exponential in terms of 
+R and C.
+Thus, the recursive tree has exponential growth, leading to a worst-case time complexity of:
+O(2R+C)
+This is because, at every step, the function branches into two possible recursive calls, leading 
+to an exponential number of calls in the worst case.
+
+Conclusion:
+The worst-case time complexity of the given function is 
+O(2R+C), where R is the number of rows and C is the number of columns in the grid.

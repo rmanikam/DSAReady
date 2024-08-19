@@ -1,0 +1,34 @@
+Q) Which of the following is not bounded by O(n^2)?
+
+Ans) n^3 / (sqrt(n))
+
+Let's analyze each of the given expressions to determine which one is not bounded by 
+
+O(n2).
+
+Expression: 
+(15^10)×n+12099
+
+This expression is linear in n. The term (15 ^ 10)×n dominates, and (15 ^ 10) is a constant. Therefore, this expression grows as 
+O(n), which is bounded by O(n^2).
+Expression: 
+
+n 
+1.98
+ 
+
+This expression grows as n ^ 1.98, which is less than O(n^2). Therefore, it is bounded by 
+O(n^2).
+
+Expression: 
+n^3
+ 
+Simplifying 
+n^3/ sqrt n, we get n ^ 2.5. This expression grows faster than n^2, so it is not bounded by 
+O(n^2).
+
+Expression: 
+(2^20)×n
+
+This expression is linear in n. The term (2^20) is a constant, so the growth rate is 
+O(n), which is bounded by O(n^2).

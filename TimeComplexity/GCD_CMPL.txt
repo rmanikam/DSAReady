@@ -1,0 +1,51 @@
+In the following C++ function, let n >= m.
+
+
+int gcd(int n, int m) {
+  if (n%m ==0) return m;
+  if (n < m) swap(n, m);
+  while (m > 0) {
+    n = n%m;
+    swap(n, m);
+  }
+  return n;
+}
+What is the time complexity of the above function assuming n > m?. 
+Θ symbol represents theta notation and Ω symbol represents omega notation.
+
+
+Analyzing the Time Complexity:
+The Euclidean algorithm has a well-known time complexity that can be expressed in 
+terms of Θ (theta) and Ω (omega) notation.
+
+Key Steps:
+Initial Step: The function first checks if n%m==0. If true, it directly returns 
+m, which would take constant time, i.e., O(1).
+Swap Operation: If n<m, it swaps n and m. This swap is also done during the iterations of the 
+while loop whenever necessary.
+While Loop: The loop continues to execute as long as 
+m>0, repeatedly updating n and m by setting n=n%m, then swapping n and m.
+
+Euclidean Algorithm Efficiency:
+The number of iterations of the loop depends on how quickly the values of 
+n and m reduce through the modulus operation. It has been proven that the Euclidean 
+algorithm runs in O(log(min(n, m))) time.
+
+Since n≥m, the time complexity will be determined by the smaller number 
+m, so the time complexity is:Θ(logm)
+This is because:
+
+The Euclidean algorithm reduces the problem size exponentially, and in the worst case,
+it takes logarithmic time relative to the smaller of the two numbers, m.
+Best-Case and Worst-Case Time Complexity:
+Best Case (Ω(1)): The best-case time complexity occurs when 
+n%m==0, which results in an immediate return after a constant number of steps, i.e., 
+Ω(1).
+
+Worst Case (Θ(logm)): In the worst case, the algorithm takes 
+Θ(logm) iterations, where m is the smaller of the two inputs.
+
+Conclusion:
+The worst-case time complexity of the Euclidean algorithm is 
+Θ(logm).
+The best-case time complexity is Ω(1).
