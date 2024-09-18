@@ -1,24 +1,35 @@
 package NumberTheory;
 class Solution {
-    static Long[] lcmAndGcd(Long A , Long B) {
-        // code here
-        long gcd = gcf(A, B);
-        long lcm = (A* B) / gcd;
-        
-        return new Long[]{lcm, gcd};
-          
+  // Eucledian Algorithm
+  static Long[] lcmAndGcd(Long A , Long B) {
+      // code here
+      long gcd = 1;
+      long C = A;
+      long D = B;
+    while ( C > 0 && D > 0)
+    {
+        if( C > D)
+        {
+            C = C % D;
         }
-         static long gcf(Long a, Long b)
-         {
-              long R;
-              while((a%b) > 0)
-              {
-                R = a%b;
-                a = b;
-                b = R;
-              }
-              return b;
-          }
-        
+        else
+        {
+            D = D % C;
+        }
+    }
+    if( C == 0)
+    {
+        gcd = D;
+    }
+    else
+    {
+       gcd = C; 
+    }
     
+    
+    
+    long lcm = (A * B) / gcd;
+    return new Long[]{lcm, gcd};
+  }
+
 };
