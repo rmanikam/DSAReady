@@ -7,6 +7,23 @@ class Solution
     {
         // code here
         long sum = 0;
+        boolean[] isPrime = new boolean[n  + 1]; // we traverse till n as we want to include n also 
+        // so that is why from 0 to n it is n + 1
+
+        for(int i = 2; i <=n; i++)
+        {
+           isPrime[i] = true;
+        }
+        for(int i = 2; i * i <= n; i++)
+        {
+            if(isPrime(i) == true)
+            {
+                for(int j = i * i; j <=n; j+=i)
+                {
+                    isPrime[i] = false;
+                }
+            }
+        }
         for (int i = 2; i <= n; i++)
         {
             if (isPrime(i))
@@ -14,6 +31,8 @@ class Solution
                 sum += i;
             }
         }
+
+
         return sum;
         
         

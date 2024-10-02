@@ -10,11 +10,11 @@ class Node {
     }
 }
 
-public class InsertLL {
+public class LLoperations {
 
     Node head;
 
-    public InsertLL() {
+    public LLoperations() {
         head = null;
     }
 
@@ -134,7 +134,7 @@ public class InsertLL {
     }
 
     public static void main(String[] args) {
-        InsertLL list = new InsertLL();
+        LLoperations list = new LLoperations();
 
         list.insertLast(10);
 
