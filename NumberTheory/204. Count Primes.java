@@ -1,4 +1,6 @@
 package NumberTheory;
+// Count Primes using Sieve of Eratosthenes algorithm.
+
 class Solution {
     public int countPrimes(int n) {
         if(n < 2)
