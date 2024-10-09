@@ -21,8 +21,7 @@ class Solution {
         for(int i = 1; i <= n; i++)
         {   
             fast = fast.next;
-            
-        }
+                    }
        
         while(fast.next != null)
         {
