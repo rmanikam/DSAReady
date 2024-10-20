@@ -37,7 +37,7 @@ package Sorting;
 // 	}
 // }
 // in selection sort we find the min element  and put it in index ith position
- class Solution {
+ class SelectionSort {
     public static void selectionSort(int[] arr) {
         //Your code goes here
  
