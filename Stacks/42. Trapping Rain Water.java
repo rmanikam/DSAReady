@@ -88,7 +88,6 @@ class Solution {
         int left = 0, right = n - 1;
         int leftMax = 0, rightMax = 0;
         int total = 0;
-        int[] trappedWater = new int[n]; // For visualization
 
         while (left <= right) {
             if (height[left] <= height[right]) {
@@ -110,3 +109,5 @@ class Solution {
         return total;
     }
 }
+
+// tc is o(n) and s.c is o(1)
