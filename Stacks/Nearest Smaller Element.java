@@ -4,7 +4,7 @@ package Stacks;
 import java.util.Stack;
 
  class Solution {
-    public int[] prevSmaller(int[] A) {
+    public int[] nextSmaller(int[] A) {
         
         
         int n = A.length;
