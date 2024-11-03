@@ -1,3 +1,14 @@
+class Node {
+    // define elements inside Node like the data and the next Node that it points to
+    int data;
+    Node next;
+
+    // define a constructor
+    Node(int val) {
+        data = val;
+        next = null;
+    }
+}
 
     // Function to reverse a linked list.
     // iterative solution

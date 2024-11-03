@@ -1,3 +1,9 @@
+class ListNode {
+    int val;
+    ListNode next;
+
+}
+
 class Solution {
 
     public ListNode findLastNode(ListNode head, int k)

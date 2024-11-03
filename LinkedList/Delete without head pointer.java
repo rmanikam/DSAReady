@@ -1,3 +1,9 @@
+
+class Node {
+    int data;
+    Node next;
+
+}
 class Solution {
     void deleteNode(Node node) {
         // Your code here

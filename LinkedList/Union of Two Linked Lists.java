@@ -1,7 +1,17 @@
 import java.util.Set;
 import java.util.HashSet;
 
+class Node {
+    // define elements inside Node like the data and the next Node that it points to
+    int data;
+    Node next;
 
+    // define a constructor
+    Node(int val) {
+        data = val;
+        next = null;
+    }
+}
 class Solution {
     public static Node findUnion(Node head1, Node head2) {
         // Add your code here.
