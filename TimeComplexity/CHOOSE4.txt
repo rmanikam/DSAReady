@@ -1,0 +1,17 @@
+    What does it mean when we say that an algorithm X is asymptotically more efficient than Y?
+
+    Ans is X will always be a better choice for large inputs
+
+
+    When we say that an algorithm X is asymptotically more efficient than Y, it means that as the input size grows larger (approaches infinity), the growth rate of the running time or resource usage of X increases more slowly than that of Y.
+
+    In other words, for large input sizes, the algorithm X performs better than Y. The comparison is typically done using Big-O notation, which classifies algorithms based on their worst-case performance as input size increases.
+
+    For example, if algorithm X has a time complexity of 
+    𝑂(𝑛log𝑛)
+    O(nlogn) and algorithm Y has a time complexity of 
+    𝑂(𝑛2)
+    O(n2), X is considered asymptotically more efficient than Y because 𝑛log𝑛
+    nlogn grows more slowly than 𝑛2 as n increases. This means that for sufficiently large inputs,
+    X will perform better (i.e., complete faster or use fewer resources) than Y, even though for smaller inputs,
+    Y might sometimes outperform X.

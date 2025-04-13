@@ -1,0 +1,53 @@
+What is the worst case time complexity of the following code:
+
+int memo[101][101];
+int findMinPath(vector<vector<int> >& V, int r, int c) {
+  int R = V.size();
+  int C = V[0].size();
+  if (r >= R || c >= C) return 100000000; // Infinity
+  if (r == R - 1 && c == C - 1) return 0;
+  if (memo[r][c] != -1) return memo[r][c];
+  memo[r][c] =  V[r][c] + min(findMinPath(V, r + 1, c), findMinPath(V, r, c + 1));
+  return memo[r][c];
+}
+
+Callsite : 
+memset(memo, -1, sizeof(memo));
+findMinPath(V, 0, 0);
+Assume R = V.size() and C = V[0].size() and V has positive elements
+
+
+The given code is a dynamic programming (DP) implementation that uses memoization to avoid redundant recursive calls. Let’s break down the code and analyze the worst-case time complexity.
+
+Key Aspects of the Code:
+Memoization: The memo array stores results of subproblems so that the function doesn't recompute the same subproblem multiple times.
+Base Cases:
+If the current position is out of bounds (r >= R || c >= C), the function returns a large value (infinity), effectively pruning this path.
+If the current position is the bottom-right corner of the grid (r == R - 1 && c == C - 1), the function returns 0, signaling the end of the path.
+Memoized Return: Before doing recursive calls, the function checks if the result for the subproblem (r, c) is already computed and stored in the memo array. If so, it returns the cached value.
+Analysis of Recursive Calls:
+Memoization Effect: The memo[r][c] array prevents recalculating the minimum path for the same cell. Each cell in the grid (r, c) is calculated at most once because the result is stored after the first calculation and reused in subsequent calls.
+
+Number of Subproblems:
+
+The grid has 
+R×C cells. Each cell corresponds to a unique subproblem, meaning there are 
+R×C unique subproblems.
+
+Work Done per Subproblem:
+
+For each cell (r, c), the function makes two recursive calls: one to the cell below (r+1, c) 
+and one to the cell to the right (r, c+1). However, because of memoization, each 
+cell's subproblem is solved only once.
+Time Complexity:
+Number of Unique Subproblems: There are 
+R×C subproblems.
+Work Done per Subproblem: For each subproblem, the function performs constant 
+work (i.e., a few comparisons and additions).
+Thus, the overall time complexity is the number of subproblems × work per subproblem, which is:
+O(R×C)
+Conclusion:
+The worst-case time complexity of the given code with memoization is 
+O(R×C), where 
+
+R is the number of rows and C is the number of columns in the grid.
