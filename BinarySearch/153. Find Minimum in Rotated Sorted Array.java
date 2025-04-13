@@ -82,6 +82,7 @@ class Solution {
                 // here smallest is at mid
             //     end = mid - 1;
             // }
+<<<<<<< HEAD
 
             // class Solution {
             //     public int findMin(int[] nums) {
@@ -139,3 +140,5 @@ class Solution {
                    
             //     }
             // }
+=======
+>>>>>>> 00f1a019a60193ce5906c4c15472268d4af7abcc
