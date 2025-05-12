@@ -1,22 +1,68 @@
 package SlidingWindow;
+
+// brute Force
+
+// class Solution {
+//     public int numberOfSubarrays(int[] nums, int k) {
+//         int n = nums.length;
+//         int count = 0;
+//         for(int i = 0; i < n;i++)
+//         {
+//             int oddCount  = 0;
+          
+//             for(int j = i; j < n; j++)
+//             {
+                
+//                 if(nums[j] % 2 != 0)
+//                 {
+//                     oddCount++;
+//                 }
+//                 if(oddCount == k)
+//                 {
+//                     count++;
+//                 }
+//                 else if(oddCount > k)
+//                 {
+//                     break;
+//                 }
+                
+//             }
+//         }
+//         return count;
+//     }
+// }
+
+//optimal
+
 class Solution {
-
-    public int numberOfSubarrays(int[] nums, int k)
-    {
+    public int numberOfSubarrays(int[] nums, int k) {
+        return helper(nums, k) - helper(nums, k - 1);
+    }
+    public int helper(int[] nums, int k) {
         int n = nums.length;
-        int l = 0, r = 0, sum = 0, count = 0;
-        while( r < n )
+        int count = 0;
+        int oddCount  = 0;
+        int left = 0;
+        for(int right = 0; right < n; right++)
         {
-
-            sum += (nums[r] % 2);
-            while(sum > k)
+            if(nums[right]%2 != 0)
             {
-                sum -= (nums[l] % 2);
-                l = l + 1;
+                oddCount++;
             }
-            count += r - l + 1;
-            r = r + 1;
+            while(oddCount > k)
+            {
+               
+               if(nums[left] %2 != 0)
+               {
+                 oddCount--;
+               }
+               left++;
+            }
+            count+= right-left + 1;
+        
         }
+          
+            
         return count;
     }
 }
