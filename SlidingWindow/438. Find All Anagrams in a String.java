@@ -10,7 +10,7 @@ package SlidingWindow;
 //         if (sLen < pLen) return result;
 
 //         for (int i = 0; i <= sLen - pLen; i++) {
-//             // Count frequency of substring s[i ... i+pLen-1]
+//             Count frequency of substring s[i ... i+pLen-1]
 //             int[] subFreq = new int[26];
 //             for (int j = i; j < i + pLen; j++) {
 //                 subFreq[s.charAt(j) - 'a']++;
