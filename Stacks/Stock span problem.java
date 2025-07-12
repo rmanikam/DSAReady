@@ -1,15 +1,16 @@
 package Stacks;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
 // brute force
 
 // class Solution {
-//     // Function to calculate the span of stock's price for all n days.
+//     Function to calculate the span of stock's price for all n days.
 //     public ArrayList<Integer> calculateSpan(int[] arr) {
-//         // write code here
+//         write code here
 //         ArrayList<Integer> output = new ArrayList<Integer>();
-        
+
 //         for(int i = 0; i < arr.length; i++)
 //         {
 //             int j = i;
@@ -27,8 +28,7 @@ import java.util.Stack;
 //                 j--;
 //             }
 //             output.add(count);
-            
-            
+
 //         }
 //         return output;
 //     }
@@ -54,7 +54,6 @@ class Solution {
         return output;
     }
 }
-
 
 // tc is o(2n)
 // s.c is o(n)

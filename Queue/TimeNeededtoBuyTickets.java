@@ -25,7 +25,7 @@ package Queue;
 //     }
 // }
 
-// optimaal sol
+// optimal sol
 
 class Solution {
     public int timeRequiredToBuy(int[] tickets, int k) {

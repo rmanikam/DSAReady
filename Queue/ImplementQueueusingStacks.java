@@ -1,5 +1,7 @@
 package Queue;
 
+import java.util.Stack;
+
 // approach1
 
 // class MyQueue {
