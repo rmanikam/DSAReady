@@ -3,33 +3,35 @@ package NumberTheory;
 
 class Solution {
     public int countPrimes(int n) {
-        if(n < 2)
-        {
-            return 0;
+        int count = 0;
+        boolean[] isPrime = new boolean[n];
+        for (int i = 2; i < n; i++) {
+            isPrime[i] = true;
         }
-        boolean[] composites = new boolean[n];
-        double m = Math.sqrt(n);
-        for(int i = 2; i<= m; i++)
-        {
-           if(composites[i] == false)
-           {
-                 for(int j = i * i; j < n; j+=i)
-                 {
-                    composites[j] = true;
-                 }   
-           }
-           
+        for (int i = 2; i * i < n; i++) {
+            if (isPrime[i]) {
+                for (int j = i * i; j < n; j += i) {
+                    isPrime[j] = false;
+                }
+            }
 
         }
-        int count = 0;
-        for(int i = 2; i < n; i++)
-        {
-            if(composites[i] == false)
-            {
-              count++;
+        for (int i = 2; i < n; i++) {
+            if (isPrime[i]) {
+                count++;
             }
         }
         return count;
+    }
 
+    public boolean isPrime(int i) {
+        int j = 2;
+        while (j * j <= i) {
+            if (i % j == 0) {
+                return false;
+            }
+            j++;
+        }
+        return true;
     }
 }

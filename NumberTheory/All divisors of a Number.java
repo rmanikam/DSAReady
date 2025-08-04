@@ -1,11 +1,13 @@
 package NumberTheory;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 // class Solution {
 //     public static void print_divisors(int n) {
-        // code here
-        
+// code here
+
 //         for(int i = 1; i <= n; i++)
 //         {
 //             if(n % i == 0)
@@ -16,36 +18,54 @@ import java.util.ArrayList;
 //     }
 // }
 
+// class Solution {
+//     public static void print_divisors(int n) {
+// code here
+//            ArrayList<Integer> smallerDivisors = new ArrayList<>();
+//            ArrayList<Integer> largerDivisors = new ArrayList<>();
+
+//         for(int i = 1; i * i <= n; i++)
+//         {
+//             if(n % i == 0)
+//             {
+//                  smallerDivisors.add(i);
+//                 if(n/i != i)
+//                 {
+//                    largerDivisors.add(n / i);
+//                 }
+
+//             }
+//         }
+
+//         for(int i = 0; i < smallerDivisors.size(); i++)
+//         {
+//             System.out.print(smallerDivisors.get(i) + " ");
+//         }
+
+//         for(int i = largerDivisors.size() - 1; i >= 0; i--)
+//         {
+//             System.out.print(largerDivisors.get(i) + " ");
+//         }
+//     }
+// }
 
 class Solution {
     public static void print_divisors(int n) {
         // code here
-           ArrayList<Integer> smallerDivisors = new ArrayList<>();
-           ArrayList<Integer> largerDivisors = new ArrayList<>();
-        
-        for(int i = 1; i * i <= n; i++)
-        {
-            if(n % i == 0)
-            {
-                 smallerDivisors.add(i);
-                if(n/i != i)
-                {
-                   largerDivisors.add(n / i);
+        List<Integer> res = new ArrayList<Integer>();
+
+        for (int i = 1; i * i <= n; i++) {
+            if (n % i == 0) {
+                res.add(i);
+                if (n / i != i) {
+                    res.add(n / i);
                 }
-              
-                   
-               
             }
         }
-        
-        for(int i = 0; i < smallerDivisors.size(); i++)
-        {
-            System.out.print(smallerDivisors.get(i) + " ");
+        Collections.sort(res);
+        for (int ans : res) {
+            System.out.print(ans + " ");
         }
-        
-        for(int i = largerDivisors.size() - 1; i >= 0; i--)
-        {
-            System.out.print(largerDivisors.get(i) + " ");
-        }
+
     }
 }
