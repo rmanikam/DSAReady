@@ -1,81 +1,110 @@
 package BinarySearch;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 // class Solution {
-    // brute force
-    // public List<Integer> findDuplicates(int[] arr) {
-    //     
-    //     List<Integer> dupele = new ArrayList<Integer>();
-    //     for(int i = 0; i < arr.length; i++)
-    //     {
-    //         for(int j = i + 1; j <arr.length; j++)
-    //         {            
-    //             if(arr[i] == arr[j])
-    //             {
-    //             dupele.add(arr[i]);
-    //             }
-    //         }
-    //     }
-    //     return dupele;
-        
-    // }
-    
+//     public ArrayList<Integer> findDuplicates(int[] arr) {
+// code here
+//         int n = arr.length;
 
+//         ArrayList<Integer> ans = new ArrayList<Integer>();
 
-// }
-// better 
-
-// class Solution {
-//     public List<Integer> findDuplicates(int[] arr) {
-//     
-//         List<Integer> dupele = new ArrayList<Integer>();
-//         HashMap<Integer, Integer> hm = new HashMap<>();
-        
-//         for(int i = 0; i < arr.length; i++)
+//         for(int i = 0; i < n; i++)
 //         {
-//             if(hm.containsKey(arr[i]))
+//              int count = 0;
+//             for(int j = i + 1; j < n; j++)
 //             {
-//                 dupele.add(arr[i]);
+//                 if(arr[i] == arr[j])
+//                 {
+//                     count++;
+//                 }
 //             }
-//             else
+//             if(count > 0)
 //             {
-//                 hm.put(arr[i], 1);
+//                 ans.add(arr[i]);
 //             }
 //         }
-//         return dupele;
-        
+//         return ans;
 //     }
 // }
 
-// optimal
+// class Solution {
 
+//     static ArrayList<Integer> findDuplicates(int[] arr) {
+
+// sort the array so that duplicates are adjacent
+//         Arrays.sort(arr);
+
+//         ArrayList<Integer> ans = new ArrayList<>();
+
+// traverse the sorted array and check 
+// for consecutive duplicates
+//         for (int i = 1; i < arr.length; i++) {
+
+// if current element is same as previous
+//             if (arr[i] == arr[i - 1]) {
+
+// avoid adding the same duplicate 
+// multiple times
+//                 if (ans.isEmpty() || 
+//                         ans.get(ans.size() - 1) != arr[i]) {
+//                     ans.add(arr[i]);
+//                 }
+//             }
+//         }
+
+//         return ans;
+//     }
+// class Solution {
+//     public static  ArrayList<Integer> findDuplicates(int[] arr) {
+// code here
+//         int n = arr.length;
+
+//         ArrayList<Integer> ans = new ArrayList<Integer>();
+//         int [] freq = new int[n+1];
+
+//         for(int num: arr)
+//         {
+//           freq[num]++; 
+//         }
+//         for(int i = 1; i<= n; i++)
+//         {
+//             if(freq[i] == 2)
+//             {
+//                 ans.add(i);
+//             }
+//         }
+
+//         return ans;
+//     }
 class Solution {
-    public List<Integer> findDuplicates(int[] arr) {
+    public static ArrayList<Integer> findDuplicates(int[] arr) {
         // code here
-          Arrays.sort(arr); // Binary search requires a sorted array
-        List<Integer> dupele = new ArrayList<>();
-        
-        for (int i = 0; i < arr.length - 1; i++) {
-            // Perform binary search in the right half to check for duplicates
-            if (binarySearch(arr, i + 1, arr.length - 1, arr[i])) {
-                // Avoid adding duplicate elements multiple times
-                if (dupele.isEmpty() || dupele.get(dupele.size() - 1) != arr[i]) {
-                    dupele.add(arr[i]);
-                }
-            }
-        }
-        return dupele;
-        
-    }
-    private boolean binarySearch(int[] arr, int left, int right, int target) {
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (arr[mid] == target) {
-                return true;
-            } else if (arr[mid] < target) {
-                left = mid + 1;
+        int n = arr.length;
+
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+
+        for (int i = 0; i < n; i++) {
+            int idx = Math.abs(arr[i]) - 1;
+            if (arr[idx] < 0) {
+                ans.add(Math.abs(arr[i]));
             } else {
-                right = mid - 1;
+                arr[idx] = -arr[idx];
             }
         }
-        return false;
+
+        return ans;
+    }
+
+    public static void main(String[] args) {
+
+        int[] arr = { 2, 3, 1, 2, 3 };
+
+        ArrayList<Integer> res = findDuplicates(arr);
+
+        for (int ele : res) {
+            System.out.print(ele + " ");
+        }
+        System.out.println();
     }
 }

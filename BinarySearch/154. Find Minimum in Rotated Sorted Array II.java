@@ -1,49 +1,27 @@
 package BinarySearch;
 
-
 class Solution {
     public int findMin(int[] nums) {
-   if(nums == null || nums.length == 0)
-   {
-      return Integer.MIN_VALUE;
-   }
-    int ans = Integer.MAX_VALUE;
-    int start = 0;
-    int end = nums.length - 1;
-       while(start <= end)
-       {
-        int mid = start + (end-start)/ 2;
-        if(nums[start] <= nums[mid])
-        {
-            if(nums[mid] <= nums[end])
-            {
-               ans = Math.min(ans, nums[start]);
-               start++;
+
+        int low = 0;
+        int high = nums.length - 1;
+        int ans = Integer.MAX_VALUE;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (nums[low] == nums[mid] && nums[mid] == nums[high]) {
+                ans = Math.min(ans, nums[low]);
+                low++;
+                high--;
+                continue;
             }
-            else
-            {
+            if (nums[low] <= nums[mid]) {
+                ans = Math.min(ans, nums[low]);
+                low = mid + 1;
+            } else {
                 ans = Math.min(ans, nums[mid]);
-                start = mid + 1;
-            }
-            
-        }
-        else
-        {
-            if(nums[mid] >= nums[end])
-            {
-                ans = Math.min(ans, nums[end]);
-                end--;
-            }
-            else
-            {
-                ans = Math.min(ans, nums[mid]);
-                end = mid - 1;
+                high = mid - 1;
             }
         }
-      
-       }
-       return ans; 
-       
-       
+        return ans;
     }
 }
