@@ -1,65 +1,59 @@
 package BinarySearch;
 
-class KthSmallestElement
-{
+import java.util.Arrays;
 
-// Function to return the kth smallest
-// element from the array
-static int kthSmallest(int[] arr, int k, int n)
-{
+class KthSmallestElement {
 
-	// Minimum and maximum element from the array
-	int low = Arrays.stream(arr).min().getAsInt();
-	int high = Arrays.stream(arr).max().getAsInt();
+	// Function to return the kth smallest
+	// element from the array
+	static int kthSmallest(int[] arr, int k, int n) {
 
-	// Modified binary search
-	while (low <= high)
-	{
+		// Minimum and maximum element from the array
+		int low = Arrays.stream(arr).min().getAsInt();
+		int high = Arrays.stream(arr).max().getAsInt();
 
-		int mid = low + (high - low) / 2;
+		// Modified binary search
+		while (low <= high) {
 
-		// To store the count of elements from the array
-		// which are less than mid and
-		// the elements which are equal to mid
-		int countless = 0, countequal = 0;
-		for (int i = 0; i < n; ++i) 
-		{
-			if (arr[i] < mid)
-				++countless;
-			else if (arr[i] == mid)
-				++countequal;
+			int mid = low + (high - low) / 2;
+
+			// To store the count of elements from the array
+			// which are less than mid and
+			// the elements which are equal to mid
+			int countless = 0, countequal = 0;
+			for (int i = 0; i < n; ++i) {
+				if (arr[i] < mid)
+					++countless;
+				else if (arr[i] == mid)
+					++countequal;
+			}
+
+			// If mid is the kth smallest
+			if (countless < k
+					&& (countless + countequal) >= k) {
+				return mid;
+			}
+
+			// If the required element is less than mid
+			else if (countless >= k) {
+				high = mid - 1;
+			}
+
+			// If the required element is greater than mid
+			else if (countless < k
+					&& countless + countequal < k) {
+				low = mid + 1;
+			}
 		}
-
-		// If mid is the kth smallest
-		if (countless < k
-			&& (countless + countequal) >= k) 
-		{
-			return mid;
-		}
-
-		// If the required element is less than mid
-		else if (countless >= k) 
-		{
-			high = mid - 1;
-		}
-
-		// If the required element is greater than mid
-		else if (countless < k
-				&& countless + countequal < k)
-		{
-			low = mid + 1;
-		}
+		return Integer.MIN_VALUE;
 	}
-	return Integer.MIN_VALUE;
-}
 
-// Driver code
-public static void main(String[] args) 
-{
-	int arr[] = { 7, 10, 4, 3, 20, 15 };
-	int n = arr.length;
-	int k = 3;
+	// Driver code
+	public static void main(String[] args) {
+		int arr[] = { 7, 10, 4, 3, 20, 15 };
+		int n = arr.length;
+		int k = 3;
 
-	System.out.println(kthSmallest(arr, k, n));
-}
+		System.out.println(kthSmallest(arr, k, n));
+	}
 }
